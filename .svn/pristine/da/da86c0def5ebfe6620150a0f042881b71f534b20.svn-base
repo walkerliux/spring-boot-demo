@@ -1,0 +1,7 @@
+package com.example.demo.utils;
+
+public class Mtest {
+	public static void main(String[] args) {
+		String S="ST的 BlueNRG-1芯片";
+	}
+}

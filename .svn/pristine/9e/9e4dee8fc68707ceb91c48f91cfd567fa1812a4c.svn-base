@@ -1,0 +1,56 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /demo
+spring: 
+    profiles: 
+        active: prod 
+    datasource:
+        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        url: jdbc:sqlserver://192.168.80.25:1433;databaseName=HBASE
+        username: udata
+        password: udata123
+        type: com.alibaba.druid.pool.DruidDataSource
+        # 使用druid数据源
+       
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 20
+        maxOpenPreparedStatements: 20
+    mvc:
+        view:
+          prefix: /WEB-INF/
+          suffix: .jsp
+
+#        jpa:
+#        hibernate:
+#            ddl-auto: update
+#        show-sql: true 
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.example.demo.bean
+
+mapper:
+  mappers: com.example.demo.dao
+  not-empty: false
+  identity: MYSQL
+
+#pagehelper
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+    returnPageInfo: check
+       
+       
